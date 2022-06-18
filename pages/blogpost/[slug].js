@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import styles from "../../styles/Blog.module.css";
 
-const slug = () => {
+const Slug = () => {
   const [blog, setBlog] = useState();
 
   const router = useRouter();
@@ -40,4 +40,4 @@ const slug = () => {
   );
 };
 
-export default slug;
+export default Slug;
