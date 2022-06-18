@@ -7,9 +7,8 @@ const Slug = () => {
   const [blog, setBlog] = useState();
 
   const router = useRouter();
-
   useEffect(() => {
-    if (!router.isReady) return;
+    // if (!router.isReady) return;
 
     const { slug } = router.query;
 
@@ -22,7 +21,8 @@ const Slug = () => {
         // console.log("Data: ", data);
         setBlog(data);
       });
-  }, [router.isReady]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={styles.container}>
