@@ -1,0 +1,12 @@
+.mainNav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  font-weight: bold;
+  padding: 20px 0;
+}
+
+.mainNav ul li {
+  list-style-type: none;
+}
