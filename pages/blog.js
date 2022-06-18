@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import Link from "next/Link";
+import Link from "next/link";
 import styles from "../styles/Blog.module.css";
 
 const Blog = () => {
