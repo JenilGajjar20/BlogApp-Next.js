@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/Link";
 import styles from "../styles/Footer.module.css";
 
-const Navbar = () => {
+const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.content}>
@@ -45,4 +45,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Footer;
