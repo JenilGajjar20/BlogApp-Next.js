@@ -3,15 +3,15 @@ import * as fs from "fs";
 
 export default async function handler(req, res) {
   let data = await fs.promises.readdir("blogdata");
-  console.log("Data: ", data);
+  // console.log("Data: ", data);
 
   let myFile;
   let allBlogs = [];
   for (let i = 0; i < data.length; i++) {
     const item = data[i];
-    console.log("Item: ", item);
+    // console.log("Item: ", item);
     myFile = await fs.promises.readFile("blogdata/" + item, "utf-8");
-    console.log("myFile: ", myFile);
+    // console.log("myFile: ", myFile);
     allBlogs.push(JSON.parse(myFile));
   }
   res.status(200).json(allBlogs);
