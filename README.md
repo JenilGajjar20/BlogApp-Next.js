@@ -26,3 +26,5 @@ npm run dev
 # or
 yarn dev
 ```
+
+**This Web Application is in development mode.**
