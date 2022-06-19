@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, { useState } from "react";
 import Head from "next/head";
 import styles from "../../styles/Blog.module.css";
+import * as fs from "fs";
 
 const Slug = (props) => {
   const [blog, setBlog] = useState(props.blog);
@@ -22,17 +22,32 @@ const Slug = (props) => {
   );
 };
 
-export async function getServerSideProps(context) {
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { slug: "javaScript" } },
+      { params: { slug: "php" } },
+      { params: { slug: "python" } },
+      { params: { slug: "react" } },
+    ],
+    fallback: true,
+  };
+}
+
+export async function getStaticProps(context) {
   // console.log("Context: ", context.query);
   // const router = useRouter();
-  const { slug } = context.query;
+  console.log("Context", context);
+  const { slug } = context.params;
 
-  let data = await fetch(`http://localhost:3000/api/getblog?slug=${slug}`);
-  let blog = await data.json();
+  let blog = await fs.promises.readFile(`blogdata/${slug}.json`, "utf-8");
+
+  // let data = await fetch(`http://localhost:3000/api/getblog?slug=${slug}`);
+  // let blog = await data.json();
 
   return {
     props: {
-      blog,
+      blog: JSON.parse(blog),
     },
   };
 }
