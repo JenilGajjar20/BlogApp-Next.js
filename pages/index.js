@@ -1,21 +1,31 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import * as fs from "fs";
 import styles from "../styles/Home.module.css";
+import InfiniteScroll from "react-infinite-scroll-component";
 
-export default function Home() {
-  const [blogs, setBlogs] = useState([]);
+export default function Home(props) {
+  const [blogs, setBlogs] = useState(props.allBlogs);
+  const [count, setCount] = useState(6);
 
-  useEffect(() => {
-    console.log("useEffect is running.");
-    fetch("http://localhost:3000/api/blogs")
-      .then((items) => {
-        return items.json();
-      })
-      .then((data) => {
-        setBlogs(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   console.log("useEffect is running.");
+  //   fetch("http://localhost:3000/api/blogs")
+  //     .then((items) => {
+  //       return items.json();
+  //     })
+  //     .then((data) => {
+  //       setBlogs(data);
+  //     });
+  // }, []);
+
+  const fetchData = async () => {
+    let d = await fetch(`http://localhost:3000/api/blogs?count=${count + 3}`);
+    setCount(count + 3);
+    let data = await d.json();
+    setBlogs(data);
+  };
 
   return (
     <div>
@@ -35,23 +45,56 @@ export default function Home() {
 
         <div className={styles.container}>
           <h4 className={styles.text}>All Blogs</h4>
-          <div className={styles.blogs}>
-            {blogs.map((blog, index) => {
-              return (
-                <div key={index} className={styles.blogItem}>
-                  <Link href={`/blogpost/${blog.slug}`}>
-                    <h2>{blog.title}</h2>
-                  </Link>
-                  <p>
-                    {blog.content.substr(0, 250) + "... "}
-                    <Link href={`/blogpost/${blog.slug}`}>read more</Link>
-                  </p>
-                </div>
-              );
-            })}
-          </div>
+          <InfiniteScroll
+            dataLength={blogs.length} //This is important field to render the next data
+            next={fetchData}
+            hasMore={props.allCount !== blogs.length}
+            loader={<h4 style={{ textAlign: "center" }}>Loading...</h4>}
+            endMessage={
+              <p style={{ textAlign: "center" }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            }
+          >
+            <div className={styles.blogs}>
+              {blogs.map((blog, index) => {
+                return (
+                  <div key={index} className={styles.blogItem}>
+                    <Link href={`/blogpost/${blog.slug}`}>
+                      <h2>{blog.title}</h2>
+                    </Link>
+                    <p>
+                      {blog.metaContent.substr(0, 250) + "... "}
+                      <Link href={`/blogpost/${blog.slug}`}>read more</Link>
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </InfiniteScroll>
         </div>
       </main>
     </div>
   );
+}
+export async function getStaticProps(context) {
+  // let data = await fetch("http://localhost:3000/api/blogs");
+  // let allBlogs = await data.json();
+
+  let data = await fs.promises.readdir("blogdata");
+  let allCount = data.length;
+  let myFile;
+  let allBlogs = [];
+  for (let i = 0; i < 4; i++) {
+    const item = data[i];
+    myFile = await fs.promises.readFile("blogdata/" + item, "utf-8");
+    allBlogs.push(JSON.parse(myFile));
+  }
+
+  return {
+    props: {
+      allBlogs,
+      allCount,
+    },
+  };
 }

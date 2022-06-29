@@ -4,6 +4,10 @@ import styles from "../../styles/Blog.module.css";
 import * as fs from "fs";
 
 const Slug = (props) => {
+  function createMarkup(content) {
+    return { __html: content };
+  }
+
   const [blog, setBlog] = useState(props.blog);
 
   return (
@@ -15,21 +19,31 @@ const Slug = (props) => {
       </Head>
 
       <main className={styles.main}>
-        <h2>{blog?.title}</h2>
-        <p>{blog?.content}</p>
+        <h2 className={styles.title}>{blog?.title}</h2>
+        {blog && (
+          <div className={styles.content}>
+            <h4>{blog.content[0].question}</h4>
+            <p>{blog.content[0].answer}</p>
+            <h4>{blog.content[1].question}</h4>
+            <p>{blog.content[1].answer}</p>
+            <h4>{blog.content[2].question}</h4>
+            <p>{blog.content[2].answer}</p>
+          </div>
+        )}
       </main>
     </div>
   );
 };
 
 export async function getStaticPaths() {
+  let allBlogs = await fs.promises.readdir("blogdata");
+  allBlogs = allBlogs.map((item) => {
+    return { params: { slug: item.split(".")[0] } };
+  });
+  console.log("Blogs: ", allBlogs);
+
   return {
-    paths: [
-      { params: { slug: "javaScript" } },
-      { params: { slug: "php" } },
-      { params: { slug: "python" } },
-      { params: { slug: "react" } },
-    ],
+    paths: allBlogs,
     fallback: true,
   };
 }
@@ -37,7 +51,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // console.log("Context: ", context.query);
   // const router = useRouter();
-  console.log("Context", context);
+  // console.log("Context", context);
   const { slug } = context.params;
 
   let blog = await fs.promises.readFile(`blogdata/${slug}.json`, "utf-8");

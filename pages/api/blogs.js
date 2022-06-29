@@ -2,14 +2,16 @@
 import * as fs from "fs";
 
 export default async function handler(req, res) {
+  // console.log("Count: ", req.query.count);
   let data = await fs.promises.readdir("blogdata");
   // console.log("Data: ", data);
+  data = data.slice(0, parseInt(req.query.count));
 
   let myFile;
   let allBlogs = [];
   for (let i = 0; i < data.length; i++) {
     const item = data[i];
-    // console.log("Item: ", item);
+    console.log("Item: ", item);
     myFile = await fs.promises.readFile("blogdata/" + item, "utf-8");
     // console.log("myFile: ", myFile);
     allBlogs.push(JSON.parse(myFile));

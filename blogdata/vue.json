@@ -1,0 +1,38 @@
+{
+  "title": "Learn about Vue.js",
+  "content": [
+    {
+      "question": "What is Vue.js?",
+      "answer": [
+        "While JavaScript is its own beast, the ecosystem it exists within is more important than the programming language itself. Frameworks and libraries make the developer’s life so much easier by providing a solid platform – culminating in less bumps in the development road.",
+
+        "VueJS is one such framework. If you think of JavaScript as the alphabet, then VueJS is the phrasebook that enables the programmer to construct intelligent sentences to communicate with.",
+
+        "Vue is an open-source progressive framework that is designed to be incrementally adoptable, as the core library is focused around the view layer only. That being said, it’s more than capable of powering sophisticated single page apps with the help of modern tools and if there are libraries to support it. ",
+
+        "Originally, VueJS was developed as a way to take the best parts of Angular, and build a custom tool around it. The data binding and data driven way of dealing with a HTML based Document Object Model or DOM was favoured in lieu of working with the DOM directly.",
+
+        "Unlike Facebook’s React and Google’s Angular, VueJS is developed and financed solely from donations by users via Patreon. It’s interesting to see such widespread adoption on GitHub despite not having the backing that members of the Big 4 Tech companies have."
+      ]
+    },
+    {
+      "question": "What It’s Used For?",
+      "answer": [
+        "VueJS is primarily used to build web interfaces and one-page applications. In saying that, it can also be applied to both desktop and mobile app development thanks to the HTML extensions and JS base working in tandem with an Electron framework – making it a heavily favoured frontend tool.",
+
+        "Vue does this by using traditional Model View Controller or MVC architecture to view the user interface of an app or website by using its core library as the default view layer. It’s flexible in that it can also operate with Component Based Architecture or CBA – just like that used in React. "
+      ]
+    },
+    {
+      "question": "Why It’s Popular?",
+      "answer": [
+        "Put simply, it’s a view-oriented product. The view is the most essential part of everything that occurs inside the system, and all information is only validated if it interacts with views correctly. Creating just a single view is pretty basic, and here lies the main advantage and desire to use VueJS – the simplicity, and the low entry barrier. All you need to do is load the interface and add JavaScript to begin. Data is then sent to the view directly using simple syntax, where VueJS automatically renders the elements without coding – an instance of the system can then be used for the element’s rendering.",
+
+        "The tool allows for modification of parts of the code by keeping the information in the data object while the updates affect other linked parts in real time. "
+      ]
+    }
+  ],
+  "founder": "Evan You",
+  "metaContent": "VueJS is primarily used to build web interfaces and one-page applications. In saying that, it can also be applied to both desktop and mobile app development thanks to the HTML extensions and JS base working in tandem with an Electron framework – making it a heavily favoured frontend tool.",
+  "slug": "vue"
+}

@@ -1,6 +1,33 @@
 {
-  "title": "What is React used for?",
-  "content": "React.js is an open-source JavaScript library that is used for building user interfaces specifically for single-page applications. It's used for handling the view layer for web and mobile apps. React also allows us to create reusable UI components.",
+  "title": "Learn about React",
+  "content": [
+    {
+      "question": "What is React and How Does It Work?",
+      "answer": [
+        "React.js is an open-source JavaScript library that is used for building user interfaces specifically for single-page applications. It’s used for handling the view layer for web and mobile apps. React also allows us to create reusable UI components. React was first created by Jordan Walke, a software engineer working for Facebook. React first deployed on Facebook’s newsfeed in 2011 and on Instagram.com in 2012.",
+
+        "React allows developers to create large web applications that can change data, without reloading the page. The main purpose of React is to be fast, scalable, and simple. It works only on user interfaces in the application. This corresponds to the view in the MVC template. It can be used with a combination of other JavaScript libraries or frameworks, such as Angular JS in MVC."
+      ]
+    },
+    {
+      "question": "What are the React.js Features?",
+      "answer": [
+        "React.js is declarative, simple, component based, supports server side, is extensive, is fast, is easy to learn"
+      ]
+    },
+    {
+      "question": "Why It’s Popular?",
+      "answer": [
+        "React, compared to other popular frontend frameworks like Angular & Vue, is much easier to learn. ",
+        "In fact, it’s one of the main reasons why React gained so much traction in little time. It helps businesses quickly build their projects.",
+        "When you’re building a complex, high-load app, it becomes mandatory to define the structure of the app in the beginning since it can impact the performance of your app.",
+        "In simple words, the DOM model is tree-structured. So, a minor modification at a higher level layer can awfully impact the user interface of an application. To solve this, Facebook has introduced a virtual DOM feature.",
+        "Virtual DOM, as the name suggests, is the virtual representation of DOM that allows testing all changes to the virtual DOM first to calculate risks with each modification.",
+        "This approach, as a result, helps to maintain high app performance and guarantees a better user experience."
+      ]
+    }
+  ],
   "founder": "Jordan Walke",
+  "metaContent": "React.js is an open-source JavaScript library that is used for building user interfaces specifically for single-page applications. It's used for handling the view layer for web and mobile apps. React also allows us to create reusable UI components.",
   "slug": "react"
 }
